@@ -2,8 +2,6 @@ import 'dart:convert';
 
 Data dataFromJson(String str) => Data.fromJson(json.decode(str));
 
-String dataToJson(Data data) => json.encode(data.toJson());
-
 class Data {
   Data({
     required this.page,
@@ -29,15 +27,6 @@ class Data {
         data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
         support: Support.fromJson(json["support"]),
       );
-
-  Map<String, dynamic> toJson() => {
-        "page": page,
-        "per_page": perPage,
-        "total": total,
-        "total_pages": totalPages,
-        "data": List<dynamic>.from(data.map((x) => x.toJson())),
-        "support": support.toJson(),
-      };
 }
 
 class Datum {
@@ -62,14 +51,6 @@ class Datum {
         lastName: json["last_name"],
         avatar: json["avatar"],
       );
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "email": email,
-        "first_name": firstName,
-        "last_name": lastName,
-        "avatar": avatar,
-      };
 }
 
 class Support {
@@ -85,9 +66,4 @@ class Support {
         url: json["url"],
         text: json["text"],
       );
-
-  Map<String, dynamic> toJson() => {
-        "url": url,
-        "text": text,
-      };
 }
