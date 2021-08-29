@@ -54,6 +54,9 @@ class _SupportPageState extends State<SupportPage> {
                       color: Colors.black,
                     ),
                   ),
+                  SizedBox(
+                    height: deviceHeight * 0.02,
+                  ),
                   Text(
                     'For site visit :${users!.support.url} ',
                     style: TextStyle(

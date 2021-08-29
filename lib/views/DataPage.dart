@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/model/userModel.dart';
 import 'package:myapp/service/services.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class DataPage extends StatefulWidget {
   @override
@@ -58,23 +59,16 @@ class _DataPageState extends State<DataPage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Align(
-                              alignment: Alignment.topCenter,
-                              child: CircleAvatar(
-                                radius: 30,
-                                child: ClipOval(
-                                  child:
-                                      Image.network(users!.data[index].avatar),
-                                ),
+                            CircleAvatar(
+                              radius: 30,
+                              child: CachedNetworkImage(
+                                imageUrl: users!.data[index].avatar,
+                                placeholder: (context, url) =>
+                                    CircularProgressIndicator(),
+                                errorWidget: (context, url, error) =>
+                                    Icon(Icons.error),
                               ),
                             ),
-                            // Text(
-                            //   'id :${users!.data[index].id} ',
-                            //   style: TextStyle(
-                            //     fontSize: 20,
-                            //     color: Colors.black,
-                            //   ),
-                            // ),
                             SizedBox(
                               height: deviceHeight * 0.03,
                             ),
