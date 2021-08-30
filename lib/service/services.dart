@@ -9,9 +9,10 @@ class Services {
   static var client = http.Client();
 
   static Future<Data?> fetchData() async {
-    try {
-      final post = Hive.box(LOAD_DATA).get('profile', defaultValue: {});
-      final Data data1 = dataFromJson(post);
+  
+       final post = Hive.box(LOAD_DATA).get('profile', defaultValue: {});
+    
+     final Data data1 = dataFromJson(post);
       if (data1 != null) return data1;
 
       var response =
@@ -19,14 +20,14 @@ class Services {
 
       if (response.statusCode == 200) {
         var jsonString = response.body;
+    
         final Data data = dataFromJson(jsonString);
-        Hive.box(LOAD_DATA).put('profile', jsonEncode(data.toJson()));
+     
+         Hive.box(LOAD_DATA).put('profile', jsonString);
         return data;
       } else {
         return null;
       }
-    } catch (e) {
-      throw e;
-    }
+    
   }
 }

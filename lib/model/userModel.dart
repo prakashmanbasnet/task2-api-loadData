@@ -21,7 +21,7 @@ class Data {
   List<Datum> data;
   Support support;
 
-  factory Data.fromJson(Map<String, dynamic> json) => Data(
+  factory Data.fromJson(Map<dynamic, dynamic> json) => Data(
         page: json["page"],
         perPage: json["per_page"],
         total: json["total"],
@@ -30,7 +30,7 @@ class Data {
         support: Support.fromJson(json["support"]),
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<dynamic, dynamic> toJson() => {
         "page": page,
         "per_page": perPage,
         "total": total,
@@ -55,7 +55,7 @@ class Datum {
   String lastName;
   String avatar;
 
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+  factory Datum.fromJson(Map<dynamic, dynamic> json) => Datum(
         id: json["id"],
         email: json["email"],
         firstName: json["first_name"],
@@ -81,12 +81,12 @@ class Support {
   String url;
   String text;
 
-  factory Support.fromJson(Map<String, dynamic> json) => Support(
+  factory Support.fromJson(Map<dynamic, dynamic> json) => Support(
         url: json["url"],
         text: json["text"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<dynamic, dynamic> toJson() => {
         "url": url,
         "text": text,
       };
